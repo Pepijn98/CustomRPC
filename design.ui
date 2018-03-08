@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CustomRPC</class>
+ <widget class="QMainWindow" name="CustomRPC">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>562</width>
+    <height>529</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="update_rpc_btn">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>450</y>
+      <width>171</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Update Rich Presence</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="details_tb">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>50</y>
+      <width>481</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>*details</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="state_tb">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>481</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>*state</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="appid_tb">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>250</y>
+      <width>481</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>**app id</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="id_secret_lbl">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>220</y>
+      <width>131</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Custom:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="rpc_data_lbl">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>20</y>
+      <width>141</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rich Presence data:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="require_lbl">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>400</y>
+      <width>231</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>* = Always required</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="custom_required_lbl">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>420</y>
+      <width>421</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>** = Only required whenever you want to use a custom app</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="largeimgname_tb">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>290</y>
+      <width>481</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>large image name</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="smallimgname_tb">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>330</y>
+      <width>481</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>small image name</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="largeimgtext_tb">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>130</y>
+      <width>481</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>large image text</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="smallimgtext_tb">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>170</y>
+      <width>481</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>small image text</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>562</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
