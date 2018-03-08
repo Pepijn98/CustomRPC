@@ -10,5 +10,5 @@ preview:
 Currently only providing linux builds but all the components are here for you to build it for whatever system you like.<br>
 All you need is python 3.5, Qt4, PyQt4 and pyinstaller<br>
 To pack everything into 1 executable the command would look like:<br>
-`pyinstaller --onefile --windowed --name customrpc_0.0.1 ./main.py`<br>
+<code>pyinstaller --onefile --windowed --name customrpc_0.0.1 ./main.py</code><br>
 You can change the name to whatever you like.
