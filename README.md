@@ -11,7 +11,7 @@ So if it doesn't see the build instructions below and install both.<br/>
 Linux preview:
 <img src="./assets/linux-preview.png"></img><br/>
 Windows preview:
-<img src="./assests/windows-preview.png"></img><br/>
+<img src="./assets/windows-preview.png"></img><br/>
 <br/>
 Currently only providing linux and windows builds.<br/>
 All the components are here for you to build it for whatever system you like.<br>
