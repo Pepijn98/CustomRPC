@@ -1,21 +1,41 @@
-<h1>CustomRPC</h1>
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/676abe43246644b0a4e9b02b18c5ceea)](https://www.codacy.com/app/KurozeroPB/CustomRPC?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KurozeroPB/CustomRPC&amp;utm_campaign=Badge_Grade)
+
+# CustomRPC
 This is a simple app to set a custom rich presence in discord<br>
-<br>
-The linux executable can be found <a href="https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.2/customrpc_0.0.2">here</a><br>
-The dep file can be found <a href="https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.2/customrpc_0.0.2.deb">here</a><br>
-The windows build can be found <a href="https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.2/customrpc_0.0.2-windows-x64.tar.gz">here</a><br/>
-<br/>
-Honestly I don't even know if the windows build runs without python and qt4<br/>
-So if it doesn't see the build instructions below and install both.<br/>
-<br/>
-Linux preview:
-<img src="./assets/linux-preview.png"></img><br/>
-Windows preview:
-<img src="./assets/windows-preview.png"></img><br/>
-<br/>
-Currently only providing linux and windows builds.<br/>
-All the components are here for you to build it for whatever system you like.<br>
-All you need is <a href="https://www.python.org/downloads/release/python-354/">python 3.5</a>, <a href="https://www.qt.io/download">Qt4</a>, <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyqt4">PyQt4</a> and <a href="https://www.pyinstaller.org/">pyinstaller</a><br>
-To pack everything into 1 executable the command would look like:<br>
-<code>pyinstaller --onefile --windowed --name customrpc_0.0.1 main.py</code><br>
-You can change the name to whatever you like.
+Only works for Linux and Windows as of now see below for all tested operating systems<br/>
+
+
+The linux executable can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.2/customrpc_0.0.2)<br>
+The dep file can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.2/customrpc_0.0.2.deb)<br>
+The windows build can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.2/customrpc_0.0.2-windows-x64.tar.gz)<br/>
+
+
+*Honestly I don't even know if the windows build runs without python and qt4<br/>
+So if it doesn't see the build instructions below and install both.*<br/>
+## Previews
+Linux                                 |Windows
+:------------------------------------:|:------------------------------------:
+![linux](./assets/linux-preview.png)  |  ![windows](./assets/windows-preview.png)
+**Result**                            |
+![result](./assets/result-preview.png)|
+
+## Building the app yourself
+#### Requirements:
+- [git](https://git-scm.com/downloads)
+- [python 3.5](https://www.python.org/downloads/release/python-354/)
+- [Qt4](https://www.qt.io/download)
+- [PyQt4](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyqt4)
+- [pyinstaller](https://www.pyinstaller.org/)
+
+Installing git, python, Qt4 and pyinstaller are pretty straight forward.<br/>
+To get PyQt4 you need to download the `.whl` and then use pip to install it<br/>
+For example `pip install PyQt4‑4.11.4‑cp35‑cp35m‑win_amd64.whl`<br/>
+
+1. `git clone https://github.com/KurozeroPB/CustomRPC.git`
+2. `cd CustomRPC`
+3. `pyinstaller --onefile --windowed --name customrpc_0.0.2 main.py`
+
+This will create an executable file in the `dist` folder
+## Tested Operating Systems
+- Linux Ubuntu 16.04 ✓
+- Windows 10 ✓
