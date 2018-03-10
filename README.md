@@ -12,6 +12,8 @@ The windows build can be found [here](https://github.com/KurozeroPB/CustomRPC/re
 
 *Honestly I don't even know if the windows build runs without python and qt4<br/>
 So if it doesn't see the build instructions below and install both.*<br/>
+<br/>
+Check out [projects](https://github.com/KurozeroPB/CustomRPC/projects/1) to see what is planned for the future.<br/>
 ## Previews
 Linux                                 |Windows
 :------------------------------------:|:------------------------------------:
