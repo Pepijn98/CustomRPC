@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=CustomRPC
-# Icon=
-Exec=/usr/local/bin/customrpc_0.0.1
-Type=Application
-Categories=Application
-Terminal=false
-StartupNotify=true
-Name[en_US]=customrpc

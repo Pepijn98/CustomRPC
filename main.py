@@ -55,19 +55,21 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
         c_simage = self.smallimgname_tb.text()
         c_stext = self.smallimgtext_tb.text()
 
-        if appid == '' and c_limage != '' or c_simage != '':
-            return self.show_alert(
-                QtGui.QMessageBox.Warning,
-                'Custom data but no custom id',
-                'Custom data e.g. large image can only be set when a custom app id is given',
-                'Warning',
-                QtGui.QMessageBox.Ok
-            )
+        print(appid)
 
         if appid == '':
-            appid = '416357849153929226'
-            c_limage = 'nobu'
-            c_simage = ''
+            if c_limage != '' or c_simage != '':
+                return self.show_alert(
+                    QtGui.QMessageBox.Warning,
+                    'Custom data but no custom id',
+                    'Custom data e.g. large image can only be set when a custom app id is given',
+                    'Warning',
+                    QtGui.QMessageBox.Ok
+                )
+            else:
+                appid = '416357849153929226'
+                c_limage = 'nobu'
+                c_simage = ''
 
         payload = {
             'state': state,
@@ -116,8 +118,8 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
         if len(payload['assets']) == 0:
             del payload['assets']
 
-        snowfake = re.compile(r'\d{17,18}')
-        match = snowfake.match(appid)
+        snowflake = re.compile(r'\d{17,18}')
+        match = snowflake.match(appid)
 
         if match:
             self.rpc = pyrpc.DiscordRPC(appid, verbose=False)
@@ -150,7 +152,7 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
         self.alert.exec_()
 
     def on_textchange(self):
-        if self.state_tb.text() == "" or self.details_tb.text() == "":
+        if self.state_tb.text() == '' or self.details_tb.text() == '':
             self.update_rpc_btn.setDisabled(True)
         else:
             self.update_rpc_btn.setDisabled(False)
