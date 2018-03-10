@@ -3,7 +3,7 @@ This is a simple app to set a custom rich presence in discord<br>
 <br>
 The linux executable can be found <a href="https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/customrpc_0.0.1">here</a><br>
 The dep file can be found <a href="https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/customrpc_0.0.1.deb">here</a><br>
-The windows build can be found <a href="https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/customrpc-windows-x64.tar.gz">here</a><br/>
+The windows build can be found <a href="https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/customrpc_0.0.1-windows-x64.tar.gz">here</a><br/>
 <br/>
 Honestly I don't even know if the windows build runs without python and qt4<br/>
 So if it doesn't see the build instructions below and install both.<br/>
