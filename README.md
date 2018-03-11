@@ -5,9 +5,9 @@ This is a simple app to set a custom rich presence in discord<br>
 Only works for Linux and Windows as of now see below for all tested operating systems<br/>
 
 
-The linux executable can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.2/customrpc_0.0.2)<br>
-The dep file can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.2/customrpc_0.0.2.deb)<br>
-The windows build can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.2/customrpc_0.0.2-windows-x64.tar.gz)<br/>
+The linux executable can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.1.0/customrpc_0.1.0)<br>
+The dep file can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.1.0/customrpc_0.1.0.deb)<br>
+The windows build can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.1.0/customrpc_0.1.0-windows-x64.zip)<br/>
 
 
 *Honestly I don't even know if the windows build runs without python and qt4<br/>
@@ -35,7 +35,7 @@ For example `pip install PyQt4‑4.11.4‑cp35‑cp35m‑win_amd64.whl`<br/>
 
 1. `git clone https://github.com/KurozeroPB/CustomRPC.git`
 2. `cd CustomRPC`
-3. `pyinstaller --onefile --windowed --name customrpc_0.0.2 main.py`
+3. `pyinstaller --onefile --windowed --name customrpc_0.1.0 main.py`
 
 This will create an executable file in the `dist` folder
 ## Tested Operating Systems

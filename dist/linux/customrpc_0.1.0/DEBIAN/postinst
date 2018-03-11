@@ -1,0 +1,3 @@
+#!/bin/bash
+mv /usr/share/app-install/desktop/customrpc.desktop /usr/share/applications
+mv /usr/share/app-install/icons/customrpc.png /usr/share/pixmaps
