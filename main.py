@@ -21,10 +21,6 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
         self.stop_rpc_btn.clicked.connect(self.close_rpc)
         self.state_tb.textChanged.connect(self.on_textchange)
         self.details_tb.textChanged.connect(self.on_textchange)
-        self.largeimgname_tb.textChanged.connect(self.on_textchange)
-        self.largeimgtext_tb.textChanged.connect(self.on_textchange)
-        self.smallimgname_tb.textChanged.connect(self.on_textchange)
-        self.smallimgtext_tb.textChanged.connect(self.on_textchange)
         self.open_data()
         self.rpc_conn = asyncio.Task(self.check_rpc_conn())
 
@@ -32,8 +28,6 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
         result = self.show_alert(
             QtGui.QMessageBox.Information,
             'Do you want to save the filled in data for next time?',
-            '',
-            '',
             QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
             def_btn=QtGui.QMessageBox.Yes,
             return_val=True
@@ -63,17 +57,15 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
             return self.show_alert(
                 QtGui.QMessageBox.Warning,
                 'State needs to be more than 2 characters long',
-                '',
-                'Warning',
-                QtGui.QMessageBox.Close
+                QtGui.QMessageBox.Close,
+                title='Warning'
             )
         elif len(details) < 2:
             return self.show_alert(
                 QtGui.QMessageBox.Warning,
                 'Details needs to be more than 2 characters long',
-                '',
-                'Warning',
-                QtGui.QMessageBox.Close
+                QtGui.QMessageBox.Close,
+                title='Warning'
             )
 
         if appid == '':
@@ -81,9 +73,8 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
                 return self.show_alert(
                     QtGui.QMessageBox.Warning,
                     'Custom data can only be set when a custom app id is given',
-                    '',
-                    'Warning',
-                    QtGui.QMessageBox.Close
+                    QtGui.QMessageBox.Close,
+                    title='Warning'
                 )
             else:
                 appid = '416357849153929226'
@@ -108,17 +99,15 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
             return self.show_alert(
                 QtGui.QMessageBox.Critical,
                 'Details is a required field, please fill it in with some text',
-                '',
-                'Critical',
-                QtGui.QMessageBox.Ok
+                QtGui.QMessageBox.Ok,
+                title='Critical'
             )
         elif state == '':
             return self.show_alert(
                 QtGui.QMessageBox.Critical,
                 'State is a required field, please fill it in with some text',
-                '',
-                'Critical',
-                QtGui.QMessageBox.Ok
+                QtGui.QMessageBox.Ok,
+                title='Critical'
             )
 
         if c_limage == '' and c_simage == '':
@@ -147,7 +136,7 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
         match = snowflake.match(appid)
 
         if match:
-            self.rpc = pyrpc.DiscordRPC(appid, verbose=True)
+            self.rpc = pyrpc.DiscordRPC(appid)
             try:
                 self.rpc.start()
                 self.rpc.send_rich_presence(payload)
@@ -155,24 +144,23 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
                 self.show_alert(
                     QtGui.QMessageBox.Critical,
                     type(e).__name__,
-                    str(e),
-                    'Critical',
-                    QtGui.QMessageBox.Close
+                    QtGui.QMessageBox.Close,
+                    info=str(e),
+                    title='Critical'
                 )
         else:
             self.show_alert(
                 QtGui.QMessageBox.Critical,
                 '"{}" is not a valid app id'.format(appid),
-                '',
-                'Critical',
-                QtGui.QMessageBox.Close
+                QtGui.QMessageBox.Close,
+                title='Critical'
             )
 
     def close_rpc(self):
         if self.rpc is not None:
             self.rpc.close()
 
-    def show_alert(self, icon: QtGui.QMessageBox, text: str, info: str, title: str, btns: int, def_btn: int = None, return_val: bool = False):
+    def show_alert(self, icon: QtGui.QMessageBox, text: str, btns: int, info: str = '', title: str = '', def_btn: int = None, return_val: bool = False):
         self.alert.setIcon(icon)
         self.alert.setText(text)
         self.alert.setInformativeText(info)
@@ -228,7 +216,6 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
         try:
             with open('customrpc-data.json', 'r') as file:
                 stuff = json.load(file)
-                print(stuff)
                 self.details_tb.setText(stuff['details'])
                 self.state_tb.setText(stuff['state'])
                 self.largeimgtext_tb.setText(stuff['largeImageText'])
@@ -243,9 +230,9 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
             self.show_alert(
                 QtGui.QMessageBox.Critical,
                 type(e).__name__,
-                str(e),
-                'Critical',
-                QtGui.QMessageBox.Close
+                QtGui.QMessageBox.Close,
+                info=str(e),
+                title='Critical'
             )
 
 

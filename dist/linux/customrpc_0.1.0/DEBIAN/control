@@ -1,8 +1,0 @@
-Package: customrpc
-Version: 0.1.0
-Section: base
-Priority: optional
-Architecture: all
-Depends: python3 (>= 3.5.1)
-Maintainer: Kurozero <support@kurozero.xyz>
-Description: Desktop app for setting a custom rich presence on discord

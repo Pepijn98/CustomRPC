@@ -7,7 +7,7 @@ import time
 
 
 class DiscordRPC:
-    def __init__(self, client_id, verbose):
+    def __init__(self, client_id: str, verbose: bool = False):
         if sys.platform == 'linux' or sys.platform == 'darwin':
             self.ipc_path = (os.environ.get('XDG_RUNTIME_DIR', None) or os.environ.get('TMPDIR', None) or
                              os.environ.get('TMP', None) or os.environ.get('TEMP', None) or '/tmp') + '/discord-ipc-0'
