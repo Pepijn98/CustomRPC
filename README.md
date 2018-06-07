@@ -41,4 +41,9 @@ For example `pip install PyQt4‑4.11.4‑cp35‑cp35m‑win_amd64.whl`<br/>
 This will create an executable file in the `dist` folder
 ## Tested Operating Systems
 - Linux Ubuntu 16.04 ✓
+- Linux Ubuntu 18.04 ✓
+- Windows 7 ✓
+- Windows 8/8.1 ✓
 - Windows 10 ✓
+
+*This is just what I tested if there are more that you know please make an issue*
