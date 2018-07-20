@@ -64,8 +64,8 @@ class DiscordRPC:
 
     def close(self):
         self.send_data(2, {})
-        self.sock_writer.close()
-        self.loop.close()
+        # self.sock_writer.close()
+        # self.loop.close()
 
     def start(self):
         self.loop.run_until_complete(self.handshake())

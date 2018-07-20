@@ -13,7 +13,7 @@ The windows build can be found [here](https://github.com/KurozeroPB/CustomRPC/re
 *Honestly I don't even know if the windows build runs without python and qt4<br/>
 So if it doesn't see the build instructions below and install both.*<br/>
 <br/>
-See the [wiki](https://github.com/KurozeroPB/CustomRPC/wiki/Creating-and-using-a-Discord-app) on how to use CustomRPC with your own app for more customization.<br/>
+See the [wiki](https://github.com/KurozeroPB/CustomRPC/wiki/Creating-and-using-a-Discord-app) **wiki is outdated** on how to use CustomRPC with your own app for more customization.<br/>
 Check out [projects](https://github.com/KurozeroPB/CustomRPC/projects/1) to see what is planned for the future.<br/>
 ## Previews
 Linux                                 |Windows
@@ -41,6 +41,7 @@ For example `pip install PyQt4‑4.11.4‑cp35‑cp35m‑win_amd64.whl`<br/>
 This will create an executable file in the `dist` folder
 ## Tested Operating Systems
 - Linux Ubuntu 16.04 ✓
+- Linux Ubuntu 17.xx ✓
 - Linux Ubuntu 18.04 ✓
 - Windows 7 ✓
 - Windows 8/8.1 ✓
