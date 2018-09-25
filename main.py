@@ -1,4 +1,4 @@
-from PyQt4 import QtGui
+from PyQt5 import QtWidgets
 import design
 import sys
 import pyrpc
@@ -7,13 +7,18 @@ import time
 import asyncio
 import json
 
+dark_theme: str = "background-color: rgb(46, 52, 54);\ncolor: rgb(238, 238, 236);"
+# TODO : Light theme option for future update
+# light_theme: str = "background-color: rgb(238, 238, 236);\ncolor: rgb(46, 52, 54);"
 
-class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
+
+class RPCApp(QtWidgets.QMainWindow, design.Ui_CustomRPC):
     def __init__(self, parent=None):
         super(RPCApp, self).__init__(parent)
         self.setupUi(self)
-        self.alert = QtGui.QMessageBox()
+        self.alert = QtWidgets.QMessageBox()
         self.rpc = None
+        self.app_settings = None
         self.appid_tb.setToolTip('Required field when using a custom app')
         self.state_tb.setToolTip('Required field')
         self.details_tb.setToolTip('Required field')
@@ -26,14 +31,14 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
 
     def closeEvent(self, event):
         result = self.show_alert(
-            QtGui.QMessageBox.Information,
+            QtWidgets.QMessageBox.Information,
             'Do you want to save the filled in data for next time?',
-            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
-            def_btn=QtGui.QMessageBox.Yes,
+            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
+            def_btn=QtWidgets.QMessageBox.Yes,
             return_val=True
         )
 
-        if result == QtGui.QMessageBox.Yes:
+        if result == QtWidgets.QMessageBox.Yes:
             self.save_data()
         else:
             self.save_data(reset=True)
@@ -55,25 +60,25 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
 
         if len(state) < 2:
             return self.show_alert(
-                QtGui.QMessageBox.Warning,
+                QtWidgets.QMessageBox.Warning,
                 'State needs to be more than 2 characters long',
-                QtGui.QMessageBox.Close,
+                QtWidgets.QMessageBox.Close,
                 title='Warning'
             )
         elif len(details) < 2:
             return self.show_alert(
-                QtGui.QMessageBox.Warning,
+                QtWidgets.QMessageBox.Warning,
                 'Details needs to be more than 2 characters long',
-                QtGui.QMessageBox.Close,
+                QtWidgets.QMessageBox.Close,
                 title='Warning'
             )
 
         if appid == '':
             if c_limage != '' or c_simage != '':
                 return self.show_alert(
-                    QtGui.QMessageBox.Warning,
+                    QtWidgets.QMessageBox.Warning,
                     'Custom data can only be set when a custom app id is given',
-                    QtGui.QMessageBox.Close,
+                    QtWidgets.QMessageBox.Close,
                     title='Warning'
                 )
             else:
@@ -97,16 +102,16 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
 
         if details == '':
             return self.show_alert(
-                QtGui.QMessageBox.Critical,
+                QtWidgets.QMessageBox.Critical,
                 'Details is a required field, please fill it in with some text',
-                QtGui.QMessageBox.Ok,
+                QtWidgets.QMessageBox.Ok,
                 title='Critical'
             )
         elif state == '':
             return self.show_alert(
-                QtGui.QMessageBox.Critical,
+                QtWidgets.QMessageBox.Critical,
                 'State is a required field, please fill it in with some text',
-                QtGui.QMessageBox.Ok,
+                QtWidgets.QMessageBox.Ok,
                 title='Critical'
             )
 
@@ -136,23 +141,23 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
         match = snowflake.match(appid)
 
         if match:
-            self.rpc = pyrpc.DiscordRPC(appid)
+            self.rpc = pyrpc.DiscordRPC(appid, True)
             try:
                 self.rpc.start()
                 self.rpc.send_rich_presence(payload)
             except Exception as e:
                 self.show_alert(
-                    QtGui.QMessageBox.Critical,
+                    QtWidgets.QMessageBox.Critical,
                     type(e).__name__,
-                    QtGui.QMessageBox.Close,
+                    QtWidgets.QMessageBox.Close,
                     info=str(e),
                     title='Critical'
                 )
         else:
             self.show_alert(
-                QtGui.QMessageBox.Critical,
+                QtWidgets.QMessageBox.Critical,
                 '"{}" is not a valid app id'.format(appid),
-                QtGui.QMessageBox.Close,
+                QtWidgets.QMessageBox.Close,
                 title='Critical'
             )
 
@@ -160,13 +165,29 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
         if self.rpc is not None:
             self.rpc.close()
 
-    def show_alert(self, icon: QtGui.QMessageBox, text: str, btns: int, info: str = '', title: str = '', def_btn: int = None, return_val: bool = False):
+    def show_alert(self,
+                   icon: QtWidgets.QMessageBox.Icon,
+                   text: str,
+                   btns: QtWidgets.QMessageBox.StandardButton,
+                   info: str = '',
+                   title: str = '',
+                   def_btn: QtWidgets.QMessageBox.StandardButton = None,
+                   return_val: bool = False):
         self.alert.setIcon(icon)
         self.alert.setText(text)
         self.alert.setInformativeText(info)
         self.alert.setWindowTitle(title)
         self.alert.setStandardButtons(btns)
         self.alert.setDefaultButton(def_btn)
+        self.alert.setStyleSheet(dark_theme)
+
+        # TODO : For future update to support light and dark theme
+        # if self.app_settings is not None:
+        #     if self.app_settings['darktheme']:
+        #         self.alert.setStyleSheet(dark_theme)
+        #     else:
+        #         self.alert.setStyleSheet(light_theme)
+
         if return_val:
             return self.alert.exec()
         else:
@@ -189,25 +210,35 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
     def save_data(self, reset: bool = False):
         if reset:
             data = {
-                'details': '',
-                'state': '',
-                'largeImageText': '',
-                'smallImageText': '',
-                'timer': False,
-                'appid': '',
-                'largeImageName': '',
-                'smallImageName': ''
+                'settings': {'darktheme': False},
+                'data': {
+                    'details': '',
+                    'state': '',
+                    'largeImageText': '',
+                    'smallImageText': '',
+                    'timer': False,
+                    'appid': '',
+                    'largeImageName': '',
+                    'smallImageName': ''
+                }
             }
         else:
+            if self.app_settings is not None:
+                settings = self.app_settings
+            else:
+                settings = {'darktheme': False}
             data = {
-                'details': self.details_tb.text(),
-                'state': self.state_tb.text(),
-                'largeImageText': self.largeimgtext_tb.text(),
-                'smallImageText': self.smallimgtext_tb.text(),
-                'timer': self.timer_cb.isChecked(),
-                'appid': self.appid_tb.text(),
-                'largeImageName': self.largeimgname_tb.text(),
-                'smallImageName': self.smallimgname_tb.text()
+                'settings': settings,
+                'data': {
+                    'details': self.details_tb.text(),
+                    'state': self.state_tb.text(),
+                    'largeImageText': self.largeimgtext_tb.text(),
+                    'smallImageText': self.smallimgtext_tb.text(),
+                    'timer': self.timer_cb.isChecked(),
+                    'appid': self.appid_tb.text(),
+                    'largeImageName': self.largeimgname_tb.text(),
+                    'smallImageName': self.smallimgname_tb.text()
+                }
             }
         with open('customrpc-data.json', 'w') as outfile:
             json.dump(data, outfile)
@@ -215,29 +246,40 @@ class RPCApp(QtGui.QMainWindow, design.Ui_CustomRPC):
     def open_data(self):
         try:
             with open('customrpc-data.json', 'r') as file:
-                stuff = json.load(file)
-                self.details_tb.setText(stuff['details'])
-                self.state_tb.setText(stuff['state'])
-                self.largeimgtext_tb.setText(stuff['largeImageText'])
-                self.smallimgtext_tb.setText(stuff['smallImageText'])
-                self.timer_cb.setChecked(stuff['timer'])
-                self.appid_tb.setText(stuff['appid'])
-                self.largeimgname_tb.setText(stuff['largeImageName'])
-                self.smallimgname_tb.setText(stuff['smallImageName'])
+                json_data = json.load(file)
+                data = json_data['data']
+                self.app_settings = json_data['settings']
+                self.details_tb.setText(data['details'])
+                self.state_tb.setText(data['state'])
+                self.largeimgtext_tb.setText(data['largeImageText'])
+                self.smallimgtext_tb.setText(data['smallImageText'])
+                self.timer_cb.setChecked(data['timer'])
+                self.appid_tb.setText(data['appid'])
+                self.largeimgname_tb.setText(data['largeImageName'])
+                self.smallimgname_tb.setText(data['smallImageName'])
+
+                # TODO : For future update to support light and dark theme
+                # if self.app_settings is not None:
+                #     if self.app_settings['darktheme']:
+                #         self.setStyleSheet(dark_theme)
+                #         self.centralwidget.setStyleSheet(dark_theme)
+                #     else:
+                #         self.setStyleSheet(light_theme)
+                #         self.centralwidget.setStyleSheet(light_theme)
         except FileNotFoundError:
             pass
         except Exception as e:
             self.show_alert(
-                QtGui.QMessageBox.Critical,
+                QtWidgets.QMessageBox.Critical,
                 type(e).__name__,
-                QtGui.QMessageBox.Close,
+                QtWidgets.QMessageBox.Close,
                 info=str(e),
                 title='Critical'
             )
 
 
 def main():
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     form_main = RPCApp()
     form_main.show()
     sys.exit(app.exec_())
