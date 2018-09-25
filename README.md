@@ -2,18 +2,13 @@
 
 # CustomRPC
 This is a simple app to set a custom rich presence in discord<br>
-Only works for Linux and Windows as of now see below for all tested operating systems<br/>
+As far as I know it only works for Linux and Windows I do not own a mac to build and test the app<br/>
 
 
-The linux executable can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.1.0/customrpc_0.1.0)<br>
-The dep file can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.1.0/customrpc_0.1.0.deb)<br>
-The windows build can be found [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.1.0/customrpc_0.1.0-windows-x64.zip)<br/>
+**Download from [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.1.1/)**
 
-
-*Honestly I don't even know if the windows build runs without python and qt4<br/>
-So if it doesn't see the build instructions below and install both.*<br/>
-<br/>
-See the [wiki](https://github.com/KurozeroPB/CustomRPC/wiki/Creating-and-using-a-Discord-app) **wiki is outdated** on how to use CustomRPC with your own app for more customization.<br/>
+**wiki is outdated**\
+See the [wiki](https://github.com/KurozeroPB/CustomRPC/wiki/Creating-and-using-a-Discord-app) on how to use CustomRPC with your own app for more customization.<br/>
 Check out [projects](https://github.com/KurozeroPB/CustomRPC/projects/1) to see what is planned for the future.<br/>
 ## Previews
 Linux                                 |Windows
@@ -25,18 +20,17 @@ Linux                                 |Windows
 ## Building the app yourself
 #### Requirements:
 - [git](https://git-scm.com/downloads)
-- [python 3.5](https://www.python.org/downloads/release/python-354/)
-- [Qt4](https://www.qt.io/download)
-- [PyQt4](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyqt4)
+- [python 3.5+](https://www.python.org/downloads/release/python-354/) (I use 3.6)
+- Qt5
+  - Linux: `sudo apt-get install qtcreator build-essential qt5-default`
+  - Windows/Mac: I'm sorry idk but google is your best friend
+- PyQt5
+  - Linux: `sudo apt-get install python3-pyqt5 pyqt5-dev-tools qttools5-dev-tools`
+  - Windows/Mac: I'm sorry idk but google is your best friend
 - [pyinstaller](https://www.pyinstaller.org/)
 
-Installing git, python, Qt4 and pyinstaller are pretty straight forward.<br/>
-To get PyQt4 you need to download the `.whl` and then use pip to install it<br/>
-For example `pip install PyQt4‑4.11.4‑cp35‑cp35m‑win_amd64.whl`<br/>
-
-1. `git clone https://github.com/KurozeroPB/CustomRPC.git`
-2. `cd CustomRPC`
-3. `pyinstaller --onefile --windowed --name customrpc_0.1.0 main.py`
+1. `git clone https://github.com/KurozeroPB/CustomRPC.git && cd CustomRPC`
+2. `pyinstaller --onefile --windowed --name customrpc_0.1.1 main.py`
 
 This will create an executable file in the `dist` folder
 ## Tested Operating Systems
