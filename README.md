@@ -5,7 +5,7 @@ This is a simple app to set a custom rich presence in discord<br>
 As far as I know it only works for Linux and Windows I do not own a mac to build and test the app<br/>
 
 
-**Download from [here](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.1.1/)**
+**Download from [here](https://github.com/KurozeroPB/CustomRPC/releases/tag/v0.1.1)**
 
 **wiki is outdated**\
 See the [wiki](https://github.com/KurozeroPB/CustomRPC/wiki/Creating-and-using-a-Discord-app) on how to use CustomRPC with your own app for more customization.<br/>
