@@ -35,7 +35,6 @@ class RPCApp(QtWidgets.QMainWindow, design.Ui_CustomRPC):
             'Do you want to save the filled in data for next time?',
             QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No | QtWidgets.QMessageBox.Reset,
             def_btn=QtWidgets.QMessageBox.Yes,
-            def_btn=QtWidgets.QmessageBox.Reset,
             return_val=True
         )
 
