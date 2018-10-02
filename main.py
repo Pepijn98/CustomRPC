@@ -33,7 +33,7 @@ class RPCApp(QtWidgets.QMainWindow, design.Ui_CustomRPC):
         result = self.show_alert(
             QtWidgets.QMessageBox.Information,
             'Do you want to save the filled in data for next time?',
-            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No | QtWidgets.QmessageBox.Reset,
+            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No | QtWidgets.QMessageBox.Reset,
             def_btn=QtWidgets.QMessageBox.Yes,
             def_btn=QtWidgets.QmessageBox.Reset,
             return_val=True
@@ -41,10 +41,8 @@ class RPCApp(QtWidgets.QMainWindow, design.Ui_CustomRPC):
 
         if result == QtWidgets.QMessageBox.Yes:
             self.save_data()
-        else if result == Qtwidgets.QMessageBox.Reset:
+        elif result == QtWidgets.QMessageBox.Reset:
             self.save_data(reset=True)
-        else:
-            self.rpc.close()
 
         if self.rpc is not None:
             self.rpc.close()
