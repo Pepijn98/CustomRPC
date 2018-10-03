@@ -4,3 +4,7 @@ build_commands.txt
 customrpc-data.json
 build/
 dist/
+target/
+src/build/
+src/main/NSIS/
+
