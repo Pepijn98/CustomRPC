@@ -1,0 +1,16 @@
+/* theme color */
+$--collapse-header-fill: #21252B;
+$--collapse-header-color: #FFFFFF;
+$--collapse-content-fill: #21252B;
+$--collapse-border-color: #333842;
+
+$--input-background-color: #282C34;
+$--input-hover-border: #181818;
+$--input-font-color: #FFFFFF;
+$--input-placeholder-color: #606266;
+
+$--border-color-base: #181818;
+
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";
