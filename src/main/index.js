@@ -50,6 +50,10 @@ function createWindow() {
             }, (response) => {
                 if (response === 0) {
                     mainWindow.webContents.send("close:request");
+                } else {
+                    forceQuit = true;
+                    rpc.destroy();
+                    app.quit();
                 }
             });
         }
