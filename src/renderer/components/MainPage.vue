@@ -18,7 +18,7 @@
             </el-collapse-item>
         </el-collapse>
         <div class="action-buttons">
-            <el-button type="danger" round @click="stop"><font-awesome-icon icon="stop" />&nbsp; Stop</el-button>
+            <el-button :disabled="!isActive" type="danger" round @click="stop"><font-awesome-icon icon="stop" />&nbsp; Stop</el-button>
             <el-button v-if="isActive === false" type="primary" round @click="start"><font-awesome-icon icon="play" />&nbsp; Start</el-button>
             <el-button v-else type="primary" round @click="update"><font-awesome-icon icon="sync-alt" />&nbsp; Update</el-button>
         </div>
@@ -47,27 +47,24 @@ export default {
     },
     mounted() {
         this.$electron.ipcRenderer.on("app:data", (_, data) => {
-            this.$data.rpcData = {
-                details: data.details,
-                state: data.state,
-                largeImageText: data.largeImageText,
-                smallImageText: data.smallImageText
-            };
-
-            this.$data.custom = {
-                appId: data.appId,
-                largeImageName: data.largeImageKey,
-                smallImageName: data.smallImageKey
-            };
+            this.$data.rpcData = data.rpcData;
+            this.$data.custom = data.custom;
         });
 
         this.$electron.ipcRenderer.on("start:success", () => {
-            console.log("Active is true");
             this.$data.isActive = true;
         });
 
         this.$electron.ipcRenderer.on("start:failed", () => {
             this.$data.isActive = false;
+        });
+
+        this.$electron.ipcRenderer.on("close:request", () => {
+            const data = {
+                rpcData: this.$data.rpcData,
+                custom: this.$data.custom
+            };
+            this.$electron.ipcRenderer.send("close:response", data);
         });
 
         this.$electron.ipcRenderer.send("app:ready");
@@ -117,6 +114,7 @@ export default {
             .el-collapse-item__header {
                 font-weight: bold;
                 font-size: 16px;
+                color: #FFFFFF !important;
             }
             .collapse-item-inner {
                 width: 80%;

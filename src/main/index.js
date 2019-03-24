@@ -7,7 +7,7 @@ import {
 const config = require("electron-json-config");
 const DiscordRPC = require("discord-rpc");
 const rpc = new DiscordRPC.Client({ transport: "ipc" });
-let activity = null;
+let activity = {};
 let clientId = "416357849153929226";
 
 const dialog = require("electron").dialog || require("electron").remote.dialog;
@@ -37,7 +37,7 @@ function createWindow() {
 
     mainWindow.loadURL(winURL);
 
-    app.on("before-quit", (e) => {
+    mainWindow.on("close", (e) => {
         if (!forceQuit) {
             e.preventDefault();
 
@@ -49,13 +49,8 @@ function createWindow() {
                 buttons: ["Yes", "No"]
             }, (response) => {
                 if (response === 0) {
-                    activity.appId = clientId;
-                    config.setBulk(activity);
+                    mainWindow.webContents.send("close:request");
                 }
-
-                forceQuit = true;
-                rpc.destroy();
-                app.quit();
             });
         }
     });
@@ -174,6 +169,15 @@ ipcMain.on("rpc:update", (_, data) => {
 
 ipcMain.on("rpc:stop", () => {
     rpc.clearActivity();
+});
+
+ipcMain.on("close:response", (_, data) => {
+    config.purge();
+    config.setBulk(data);
+
+    forceQuit = true;
+    rpc.destroy();
+    app.quit();
 });
 
 /**
