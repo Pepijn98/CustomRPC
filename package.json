@@ -46,7 +46,30 @@
             "icon": "build/icons/icon.icns"
         },
         "win": {
-            "icon": "build/icons/icon.ico"
+            "icon": "build/icons/icon.ico",
+            "target": [
+                {
+                    "target": "portable",
+                    "arch": [
+                        "x64",
+                        "ia32"
+                    ]
+                },
+                {
+                    "target": "msi",
+                    "arch": [
+                        "x64",
+                        "ia32"
+                    ]
+                },
+                {
+                    "target": "zip",
+                    "arch": [
+                        "x64",
+                        "ia32"
+                    ]
+                }
+            ]
         },
         "linux": {
             "icon": "build/icons",
@@ -55,18 +78,21 @@
                     "target": "deb",
                     "arch": [
                         "x64",
-                        "ia32",
-                        "armv7l",
-                        "arm64"
+                        "ia32"
                     ]
                 },
                 {
                     "target": "AppImage",
                     "arch": [
                         "x64",
-                        "ia32",
-                        "armv7l",
-                        "arm64"
+                        "ia32"
+                    ]
+                },
+                {
+                    "target": "tar.gz",
+                    "arch": [
+                        "x64",
+                        "ia32"
                     ]
                 }
             ]
@@ -106,7 +132,7 @@
         "del": "^3.0.0",
         "devtron": "^1.4.0",
         "electron": "^2.0.4",
-        "electron-builder": "^20.19.2",
+        "electron-builder": "^20.39.0",
         "electron-debug": "^1.5.0",
         "electron-devtools-installer": "^2.2.4",
         "eslint": "^4.19.1",
