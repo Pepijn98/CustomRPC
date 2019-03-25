@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "author": "KurozeroPB <root@kurozeropb.info>",
     "description": "An electron-vue project",
+    "homepage": "https://github.com/KurozeroPB/CustomRPC",
     "license": "GPL-3.0",
     "main": "./dist/electron/main.js",
     "scripts": {
