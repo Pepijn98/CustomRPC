@@ -14,5 +14,8 @@ You can find all builds at [releases](https://github.com/KurozeroPB/CustomRPC/re
   - [gzip](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/custom-rpc-0.0.1.tar.gz)
   - [AppImage](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/custom-rpc_0.0.1.AppImage)
 
+## Preview
+<img src="assets/preview.png" height="450">
+
 ## TODO
 - remove unneeded garbage
