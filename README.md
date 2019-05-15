@@ -1,28 +1,18 @@
-# custom-rpc
+# Custom RPC
+> Set a fully customizable rich presence on Discord
 
-> An electron-vue project
+## Downloads
+You can find all builds at [releases](https://github.com/KurozeroPB/CustomRPC/releases)
 
-#### Build Setup
+#### some quick references (all links below are x64, use the link about to find other builds)
+- windows
+  - [exe](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/custom-rpc_0.0.1.exe)
+  - [msi](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/custom-rpc_0.0.1.msi)
+  - [zip](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/custom-rpc-0.0.1-win.zip)
+- linux
+  - [dep](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/custom-rpc_0.0.1_amd64.deb)
+  - [gzip](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/custom-rpc-0.0.1.tar.gz)
+  - [AppImage](https://github.com/KurozeroPB/CustomRPC/releases/download/v0.0.1/custom-rpc_0.0.1.AppImage)
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:9080
-npm run dev
-
-# build electron application for production
-npm run build
-
-
-# lint all JS/Vue component files in `src/`
-npm run lint
-
-```
-
----
-
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
-
-# TODO
-- remove unneeded garbage from init
+## TODO
+- remove unneeded garbage
