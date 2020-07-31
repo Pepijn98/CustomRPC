@@ -43,6 +43,7 @@ module.exports = {
                 SwitchCase: 1
             }
         ],
+        "no-console": "off",
         "no-undef": "off",
         "quotes": [
             "error",

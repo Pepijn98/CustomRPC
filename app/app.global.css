@@ -3,15 +3,26 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 @import "~@fortawesome/fontawesome-free/css/all.css";
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 body {
     position: relative;
     color: white;
     height: 100vh;
     background-color: #232c39;
-    background-image: linear-gradient(45deg, rgba(0, 216, 255, 0.5) 10%, rgba(0, 1, 127, 0.7));
-    font-family: Arial, Helvetica, Helvetica Neue, serif;
+    font-family: "Ubuntu", "Roboto", Arial, Helvetica, Helvetica Neue, serif;
     overflow-y: hidden;
+}
+
+body.mac {
+    background-color: #ebebeb;
+    color: black;
+}
+
+body.win {
+    background-color: #fff;
+    color: black;
 }
 
 h2 {
@@ -19,7 +30,6 @@ h2 {
     font-size: 2.25rem;
     font-weight: bold;
     letter-spacing: -0.025em;
-    color: #fff;
 }
 
 p {
@@ -30,8 +40,11 @@ li {
     list-style: none;
 }
 
+button {
+    cursor: pointer !important;
+}
+
 a {
-    color: white;
     opacity: 0.75;
     text-decoration: none;
 }
@@ -40,4 +53,74 @@ a:hover {
     opacity: 1;
     text-decoration: none;
     cursor: pointer;
+}
+
+.titlebar .window-title {
+    visibility: hidden;
+}
+
+.titlebar .window-controls-container .window-icon-bg.inactive {
+    display: none;
+}
+
+.linux .titlebar {
+    height: 32px !important;
+    line-height: 32px !important;
+}
+
+.linux .titlebar.inactive {
+    background-color: #353c4a !important;
+}
+
+.linux .titlebar .window-controls-container .window-icon-bg {
+    border: 2px solid #242932;
+    height: 13px !important;
+    width: 13px !important;
+    margin: 6px 6px !important;
+}
+
+.linux .titlebar.inactive .window-controls-container .window-icon-bg:not(.inactive):first-child:hover {
+    background-color: #ebcb8b !important;
+}
+
+.linux .titlebar.inactive .window-controls-container .window-icon-bg:not(.inactive).window-close-bg:hover {
+    background-color: #bf616a !important;
+}
+
+.linux .titlebar.inactive .window-controls-container .window-icon-bg:not(.inactive):first-child,
+.linux .titlebar.inactive .window-controls-container .window-icon-bg:not(.inactive).window-close-bg {
+    background-color: #3b4252 !important;
+}
+
+.linux .titlebar .window-controls-container .window-icon-bg:not(.inactive):first-child {
+    background-color: #ebcb8b !important;
+}
+
+.linux .titlebar .window-controls-container .window-icon-bg:not(.inactive).window-close-bg {
+    background-color: #bf616a !important;
+}
+
+.linux .titlebar .window-controls-container .window-icon-bg:not(.inactive):hover .window-icon {
+    background-color: rgba(0, 0, 0, 1) !important;
+}
+
+.mac .container-after-titlebar {
+    border-top: 2px solid #bbbcbc;
+}
+
+.mac .titlebar.inactive {
+    background-color: #f6f6f6 !important;
+}
+
+.mac .titlebar.inactive .window-controls-container .window-icon-bg:not(.inactive):first-child:hover {
+    background-color: #feb30a !important;
+}
+
+.mac .titlebar.inactive .window-controls-container .window-icon-bg:not(.inactive).window-close-bg:hover {
+    background-color: #ff3c3f !important;
+}
+
+.mac .titlebar.inactive .window-controls-container .window-icon-bg:not(.inactive):first-child,
+.mac .titlebar.inactive .window-controls-container .window-icon-bg:not(.inactive).window-close-bg {
+    background-color: #dcdcdc !important;
 }

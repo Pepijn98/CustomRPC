@@ -50,8 +50,16 @@ const createWindow = async () => {
 
     mainWindow = new BrowserWindow({
         show: false,
-        width: 1024,
-        height: 728,
+        height: 590,
+        width: 1000,
+        useContentSize: true,
+        titleBarStyle: "hidden",
+        frame: false,
+        fullscreenable: false,
+        maximizable: false,
+        minimizable: false,
+        resizable: false,
+        transparent: false,
         // prettier-ignore
         webPreferences:
             (process.env.NODE_ENV === "development" || process.env.E2E_BUILD === "true") && process.env.ERB_SECURE !== "true"
@@ -88,8 +96,8 @@ const createWindow = async () => {
     menuBuilder.buildMenu();
 
     // Remove this if your app does not use auto updates
-    // eslint-disable-next-line
-  new AppUpdater();
+    // eslint-disable-next-line no-new
+    new AppUpdater();
 };
 
 /**
@@ -106,9 +114,9 @@ app.on("window-all-closed", () => {
 
 if (process.env.E2E_BUILD === "true") {
     // eslint-disable-next-line promise/catch-or-return
-    app.whenReady().then(createWindow);
+    app.whenReady().then(() => setTimeout(createWindow, 400));
 } else {
-    app.on("ready", createWindow);
+    app.on("ready", () => setTimeout(createWindow, 400));
 }
 
 app.on("activate", () => {

@@ -18,6 +18,8 @@
     <body>
         <div id="root"></div>
         <script>
+            const { Titlebar, Color, Themebar } = require("custom-electron-titlebar");
+
             if (typeof process === "object") {
                 const scripts = [];
 
@@ -37,6 +39,37 @@
                 if (scripts.length) {
                     document.write(scripts.map((script) => `<script defer src="${script}"><\/script>`).join(""));
                 }
+
+                let iconsTheme = Themebar.mac;
+                let backgroundColor = Color.fromHex("#353c4a");
+                let order = "inverted";
+                // const temp = "win32";
+                // switch (temp) {
+                switch (process.platform) {
+                    case "linux":
+                        document.querySelector("body").classList.add("linux");
+                        break;
+                    case "darwin":
+                        backgroundColor = Color.fromHex("#dbdbdb"); // Native mac is actually a gradient but that's not supported
+                        document.querySelector("body").classList.add("mac");
+                        break;
+                    case "win32":
+                        iconsTheme = Themebar.win;
+                        backgroundColor = Color.fromHex("#000");
+                        order = null;
+                        document.querySelector("body").classList.add("win");
+                        break;
+                }
+
+                new Titlebar({
+                    backgroundColor,
+                    maximizable: false,
+                    overflow: "hidden",
+                    order,
+                    // icon: '../resources/icon.png',
+                    menu: null,
+                    iconsTheme
+                });
             }
         </script>
     </body>

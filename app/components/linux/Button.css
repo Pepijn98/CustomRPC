@@ -1,0 +1,35 @@
+.btn-linux {
+    color: #fff;
+    cursor: pointer;
+    padding: calc(.375em - 1px) 1em;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: none;
+    font-size: 1rem;
+    height: 2em;
+}
+
+.btn-linux:hover {
+    opacity: .6;
+    border-color: transparent;
+    color: #fff;
+}
+
+.btn-linux:active {
+    opacity: .6;
+    border-color: transparent;
+    color: #fff;
+}
+
+.btn-linux:focus {
+    outline: transparent auto 1px;
+    border-color: transparent;
+    color: #fff;
+}
+
+.btn-linux:focus:not(:active) {
+    box-shadow: 0 0 0 .125em rgba(0, 0, 0, .2);
+}
